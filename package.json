@@ -1,0 +1,17 @@
+{
+  "name": "expresslearn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node expr.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5"
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="/save"> 
+    <h1 id="conti" >Continent</h1>
+    <input type="text" name="name">name</input>
+    <select id="continent">
+        <option value="europe">europe</option>
+        <option value="asia">asia</option>
+        
+        <option value="Africa">africa</option>
+    </select>
+
+    <input id="btn" type="submit">submit</input>
+
+    <h4>Countries</h4>
+    <div id="result">
+    
+</div>
+</form>
+
+    
+    <script>
+       let countries;
+       
+       
+       let option=document.getElementById('continent');
+       let options;
+let result=document.getElementById('result');
+let btn=document.getElementById('btn')
+btn.addEventListener("click",()=>{
+    options=option.value;
+    
+    fetch(`https://restcountries.eu/rest/v2/region/${options}`)
+.then(res => res.json())
+.then(data => initializeE(data))
+/*if(options.value='Asia'){
+fetch("https://restcountries.eu/rest/v2/region/asia")
+.then(res => res.json())
+.then(data => initializeA(data))}
+if(options.value='Africa'){
+fetch("https://restcountries.eu/rest/v2/region/africa")
+.then(res => res.json())
+.then(data => initializeAfrica(data))}*/
+if(options.value='Asia'){
+    setTimeout(() => {
+    console.log(countries);
+    
+     
+    countries.forEach(element => {
+       let b= document.createElement('h3')
+        b.innerHTML+=`${element.name}`; 
+        result.appendChild(b);  
+    });
+    
+}, 3000);
+}
+if(options.value='Europe'){
+    setTimeout(() => {
+    console.log(countries);
+    countries.forEach(element => {
+        let b= document.createElement('h5')
+        b.innerHTML+=`${element.name}`; 
+        result.appendChild(b);   
+    });
+}, 2000);
+}
+if(options.value='Africa'){
+    setTimeout(() => {
+    console.log(countries);
+    // countries.forEach(element => {
+    //     result.innerHTML=`${element.name}`  
+    //     console.log(countries);
+    // });
+    countries.map(element=>{
+        result.innerHTML=`${element.name}`  
+    })
+}, 2000);
+}
+/*setTimeout(() => {
+    console.log(europe);
+    result.innerHTML=`${europe[0].name}`;
+}, 500);*/
+
+    
+
+
+   
+})
+
+/*fetch("https://restcountries.eu/rest/v2/all")
+.then(res => res.json())
+.then(data => initialize(data))*/
+function initializeE(countriesdata){
+    countries=countriesdata;
+}
+
+
+
+    </script>
+</body>
+
+</html>
